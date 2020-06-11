@@ -21,6 +21,6 @@ class UserAdmin(UserAdmin):
                     "currency",
                     "superhost",
                 )
-            }
+            },
         ),
     )
