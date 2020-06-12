@@ -28,7 +28,7 @@ class User(AbstractUser):
     CURRENCY_KRW = "krw"
 
     CURRENCY_CHOICES = (
-        (CURRENCY_USD, "USE"),
+        (CURRENCY_USD, "USD"),
         (CURRENCY_KRW, "KRW"),
     )
 
