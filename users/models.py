@@ -32,8 +32,10 @@ class User(AbstractUser):
         (CURRENCY_KRW, "KRW"),
     )
 
-    avatar = models.ImageField(blank=True)
-    gender = models.CharField(choices=GENDER_CHOICES, max_length=10, blank=True)
+    avatar = models.ImageField(upload_to="avatars", blank=True)
+    gender = models.CharField(
+        choices=GENDER_CHOICES, max_length=10, blank=True, null=True
+    )
     bio = models.TextField(blank=True)
     birthdate = models.DateField(blank=True, null=True)
     language = models.CharField(choices=LANGUAGE_CHOICES, max_length=10, blank=True)
