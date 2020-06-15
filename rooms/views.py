@@ -1,5 +1,7 @@
 from django.views.generic import ListView
 from django.utils import timezone
+from django.shortcuts import render, redirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from . import models
 
 
@@ -19,8 +21,10 @@ class HomeView(ListView):
         return context
 
 
-# from django.shortcuts import render, redirect
-# from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+def room_detail(request, pk):
+    print(pk)
+    return render(request, "rooms/detail.html")
+
 
 # # Create your views here.
 # def all_rooms(request):
