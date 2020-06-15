@@ -5,7 +5,26 @@
 {% block page_name%} Home {% endblock page_name%}
 
 <!-- block-->
-{% block content %} {% for room in rooms%}
-<h2>{{room.name}} / ${{room.price}}</h2>
-{%endfor%} {% endblock %}
+{% block content %}
+  {% for room in rooms%}
+    <h2>{{room.name}} / ${{room.price}}</h2>
+  {%endfor%} 
+
+  <h5>
+    {% if rooms.has_previous %}
+        <a href="/?page={{rooms.number|add:"-1"}}">Previous</a>
+    {% endif %}
+
+    Page {{rooms.number}} of {{rooms.paginator.num_pages}}
+
+    {% if rooms.has_next %}
+        <a href="/?page={{rooms.number|add:"1"}}">Next</a>
+    {% endif %}
+  </h5>
+
+  {% for page in rooms.paginator.page_range %}
+    <a href="/?page={{page}}">{{page}}</a>
+  {% endfor %}
+{% endblock content %}
+
 
