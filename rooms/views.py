@@ -28,10 +28,6 @@ class RoomDetail(DetailView):
     model = models.Room
 
 
-# def room_detail(request, pk):
-#     try:
-#         room = models.Room.objects.get(pk=pk)
-#     except models.Room.DoesNotExist:
-#         raise Http404()
-
-#     return render(request, "rooms/detail.html", {"pk": pk, "room": room})
+def search(request):
+    city = str.capitalize(request.GET.get("city"))
+    return render(request, "rooms/search.html", {"city": city})
