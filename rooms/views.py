@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django_countries import countries
 from . import models
 
 
@@ -29,5 +30,11 @@ class RoomDetail(DetailView):
 
 
 def search(request):
-    city = str.capitalize(request.GET.get("city"))
-    return render(request, "rooms/search.html", {"city": city})
+    print(request.GET)
+    city = str.capitalize(request.GET.get("city", "Anywhere"))
+    room_types = models.RoomType.objects.all()
+    return render(
+        request,
+        "rooms/search.html",
+        {"city": city, "countries": countries, "room_types": room_types},
+    )
