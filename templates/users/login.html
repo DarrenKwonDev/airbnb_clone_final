@@ -1,0 +1,15 @@
+<!-- base -->
+{% extends "base.html" %}
+
+<!-- pagename block -->
+{% block page_name%} Login {% endblock page_name%}
+
+<!-- block-->
+{% block content %}
+<div>Login</div>
+<form method="POST" action="{% url "users:login" %}">
+  {% csrf_token %}
+  {{form.as_ul}}
+  <button>Login</button>
+</form>
+{% endblock content %}
