@@ -17,7 +17,7 @@ class LoginForm(forms.Form):
         try:
             user = models.User.objects.get(email=email)
             if user.check_password(password):
-                return password
+                return self.cleaned_data
             else:
                 # clean 메서드를 사용할 시 어느 필드에서 오류가 났는지 add_error에서 명시해줄 것
                 self.add_error("password", forms.ValidationError("password is wrong"))
